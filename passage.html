@@ -12,7 +12,7 @@
         Please select a passage<br>
     <input type="radio" id="passa-1" name="consent" value="0" onclick="whichPassage()">Passage 1<br>
     <input type="radio" id="passa-2" name="consent" value="1" onclick="whichPassage()">Passage 2<br>
-    <input type="radio" id="passa-2" name="consent" value="2" onclick="whichPassage()">Passage 3<br>    
+    <input type="radio" id="passa-3" name="consent" value="2" onclick="whichPassage()">Passage 3<br>    
     </div>
     <script>
         const passa1=document.getElementById('passa-1');
@@ -25,6 +25,9 @@
             }
             if( (document.getElementById("passa-2").checked===true)){
                 window.localStorage.setItem("passage", passa2.value);
+            }
+            if( (document.getElementById("passa-3").checked===true)){
+                window.localStorage.setItem("passage", passa3.value);
             }
             window.open("./navon-practice.html","_self");  
         }  
