@@ -158,10 +158,25 @@ let diff;
 let promptId=shuffleImgId(); // this generates the random index
 console.log(promptId);
 
-let preNavon;
+var preNavon =[
+    [0,'','',''],
+    [1,'','',''],
+    [2,'','',''],
+    [3,'','',''],
+    [4,'','',''],
+    [5,'','',''],
+    [6,'','',''],
+    [7,'','',''],
+    [8,'','',''],
+    [9,'','',''],
+    [10,'','',''],
+    [11,'','',''],
+    [12,'','',''],
+    [13,'','',''],
+];
 
 function startNavon(){
-    initializePreNavon(preNavon);
+    // initializePreNavon(preNavon);
     showPrompt(promptId);
     console.log(promptId);
 }
@@ -200,7 +215,7 @@ document.addEventListener('keypress', e =>{
     correct_response = key_answers[promptId[counter]];
     switch (e.key){
         case 'z':
-            if (counter<11){
+            if (counter<13){
                 preNavon[counter][2]=e.key;
                 const diff = stopTimer();
                 csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
@@ -221,7 +236,7 @@ document.addEventListener('keypress', e =>{
                 window.open("./reading.html","_self");
             }
     case 'm':
-        if (counter<11){
+        if (counter<13){
             preNavon[counter][2]=e.key;
             const diff = stopTimer();
             csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
@@ -269,16 +284,16 @@ function displayValues(){
 function shuffleImgId(){
     let imgId= [];
     for (let i=0; i<36; i++) {
-        imgId.push(i)
+        imgId.push(i);
     }
     let newId= [];
     while (imgId.length!==0){
-        let randomIndex=Math.floor(Math.random()*imgId.length );
+        let randomIndex=Math.floor(Math.random()*imgId.length);
         newId.push(imgId[randomIndex]);
         imgId.splice(randomIndex,1);
     }
     imgId=newId;
-    return imgId.slice(0,12);    
+    return imgId.slice(0,14);
 }
 
 
