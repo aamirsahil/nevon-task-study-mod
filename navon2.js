@@ -182,23 +182,23 @@ function startNavon(){
     console.log(promptId);
 }
 
-function initializepostNavon(){
-    postNavon=[
-        [0,'','',''],
-        [1,'','',''],
-        [2,'','',''],
-        [3,'','',''],
-        [4,'','',''],
-        [5,'','',''],
-        [6,'','',''],
-        [7,'','',''],
-        [8,'','',''],
-        [9,'','',''],
-        [10,'','',''],
-        [11,'','','']
-    ];
+// function initializepostNavon(){
+//     postNavon=[
+//         [0,'','',''],
+//         [1,'','',''],
+//         [2,'','',''],
+//         [3,'','',''],
+//         [4,'','',''],
+//         [5,'','',''],
+//         [6,'','',''],
+//         [7,'','',''],
+//         [8,'','',''],
+//         [9,'','',''],
+//         [10,'','',''],
+//         [11,'','','']
+//     ];
 
-}
+// }
 
 
 function showPrompt(imgId) {
@@ -213,51 +213,60 @@ function showPrompt(imgId) {
 }
 
 document.addEventListener('keypress', e =>{
-    correct_response = key_answers[promptId[counter]];
-    switch (e.key){
-        case 'z':
-            if (counter<13){
-                postNavon[counter][2]=e.key;
-                const diff = stopTimer();
-                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-                logValues();
-                displayValues();
-                console.log("z key is pressed");
-                console.log("------------------------ ");
-                counter++;
-                showPrompt(promptId); //call the next image
-                break;
-            }
-        else{
-                postNavon[counter][2]=e.key;
-                const diff = stopTimer();
-                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-                logValues();
-                displayValues();
-                window.open("./feedback.html","_self");
-            }
-    case 'm':
-        if (counter<13){
-            postNavon[counter][2]=e.key;
-            const diff = stopTimer();
-            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-            logValues();
-            displayValues();
-            console.log("m key is pressed");
-            console.log("------------------------ ");
-            counter++;
-            showPrompt(promptId); //call the next image
-            break;
-        }
+    if(counter>13) 
+        {return;}
     else{
-            postNavon[counter][2]=e.key;
-            const diff = stopTimer();
-            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-            logValues();
-            displayValues();
-            window.open("./feedback.html","_self");
+        correct_response = key_answers[promptId[counter]];
+        switch (e.key){
+            case 'z':
+                if (counter<13){
+                    postNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    console.log("z key is pressed");
+                    console.log("------------------------ ");
+                    showPrompt(promptId); //call the next image
+                    break;
+                }
+                else{
+                    console.log(counter);
+                    postNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    window.open("./feedback.html","_self");
+                    break;
+                    }
+            case 'm':
+                if (counter<13){
+                    postNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    console.log("m key is pressed");
+                    console.log("------------------------ ");
+                    showPrompt(promptId); //call the next image
+                    break;
+                }
+                else{
+                    console.log(counter);
+                    postNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    window.open("./feedback.html","_self");
+                    break;
+                    }     
         }
-        
     }
 });
 

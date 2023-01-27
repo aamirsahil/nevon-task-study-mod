@@ -212,51 +212,60 @@ function showPrompt(imgId) {
 }
 
 document.addEventListener('keypress', e =>{
-    correct_response = key_answers[promptId[counter]];
-    switch (e.key){
-        case 'z':
-            if (counter<13){
-                preNavon[counter][2]=e.key;
-                const diff = stopTimer();
-                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-                logValues();
-                displayValues();
-                console.log("z key is pressed");
-                console.log("------------------------ ");
-                counter++;
-                showPrompt(promptId); //call the next image
-                break;
-            }
-        else{
-                preNavon[counter][2]=e.key;
-                const diff = stopTimer();
-                csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-                logValues();
-                displayValues();
-                window.open("./reading.html","_self");
-            }
-    case 'm':
-        if (counter<13){
-            preNavon[counter][2]=e.key;
-            const diff = stopTimer();
-            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-            logValues();
-            displayValues();
-            console.log("m key is pressed");
-            console.log("------------------------ ");
-            counter++;
-            showPrompt(promptId); //call the next image
-            break;
-        }
+    if(counter > 13) 
+        {return;}
     else{
-            preNavon[counter][2]=e.key;
-            const diff = stopTimer();
-            csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
-            logValues();
-            displayValues();
-            window.open("./reading.html","_self");
+        correct_response = key_answers[promptId[counter]];
+        switch (e.key){
+            case 'z':
+                if (counter<13){
+                    preNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    console.log("z key is pressed");
+                    console.log("------------------------ ");
+                    showPrompt(promptId); //call the next image
+                    break;
+                }
+                else{
+                    console.log(counter);
+                    preNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    window.open("./reading.html","_self");
+                    break;
+                    }
+            case 'm':
+                if (counter<13){
+                    preNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    console.log("m key is pressed");
+                    console.log("------------------------ ");               
+                    showPrompt(promptId); //call the next image
+                    break;
+                }
+                else{
+                    console.log(counter);
+                    preNavon[counter][2]=e.key;
+                    const diff = stopTimer();
+                    csv_data.push([`${promptId[counter]}.png`, correct_response.key, e.key, correct_response.type, diff, correct_response.key == e.key])
+                    counter++;
+                    logValues();
+                    displayValues();
+                    window.open("./reading.html","_self");
+                    break;
+                    }      
         }
-        
     }
 });
 
