@@ -31,7 +31,7 @@ function getValuesFromLS() {
     console.log(postNavon);
     let postNavonArray = "";
     postNavon.forEach(x => {
-        postNavonArray = preNavonArray + x.join(',') + '\n'
+        postNavonArray = postNavonArray + x.join(',') + '\n'
     })
     let q1 = window.localStorage.getItem("q1");
     let q2 = window.localStorage.getItem("q2");
@@ -86,7 +86,7 @@ function downloadCSV(csv_data) {
 
     // Download csv file
     let t = moment().format('YYYY-MM-DD-HHmm-ss');
-    temp_link.download = t + `- ${window.localStorage.getItem("userName")} - ${window.localStorage.getItem("paragraph_type")} - ${window.localStorage.getItem("paragraph_id")}`  + ".csv";
+    temp_link.download = t + `- ${window.localStorage.getItem("userName")} - ${window.localStorage.getItem("paragraph_type")} - ${window.localStorage.getItem("passage")}`  + ".csv";
     var url = window.URL.createObjectURL(CSVFile);
     temp_link.href = url;
 
