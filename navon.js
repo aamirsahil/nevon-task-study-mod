@@ -283,17 +283,24 @@ function displayValues(){
 
 function shuffleImgId(){
     let imgId= [];
-    for (let i=0; i<36; i++) {
-        imgId.push(i);
-    }
-    let newId= [];
-    while (imgId.length!==0){
-        let randomIndex=Math.floor(Math.random()*imgId.length);
-        newId.push(imgId[randomIndex]);
-        imgId.splice(randomIndex,1);
-    }
-    imgId=newId;
-    return imgId.slice(0,14);
+    // for (let i=0; i<36; i++) {
+    //     imgId.push(i);
+    // }
+    let newId= [[0,13,3,26,6,28,5,0,22,20,7,9,11,15],
+                [1,12,14,15,28,18,13,17,8,10,33,31,5,23],
+                [15,11,9,7,20,22,0,5,28,6,26,3,13,0],
+                [23,5,31,33,10,8,17,13,18,28,15,14,12,1],
+                [3,5,20,33,10,18,17,13,18,28,13,14,12,1],
+                [24,6,20,33,25,18,34,13,18,26,15,11,12,10],
+                [35,16,12,33,25,2,34,17,20,26,15,30,9,10],
+                [31,12,16,25,33,34,3,20,17,15,26,9,30,7],
+                [12,31,35,16,10,21,8,27,18,17,9,26,31,6],
+                [5,3,33,20,18,10,13,17,28,18,14,23,1,12],
+                [17,27,9,0,18,5,13,17,27,19,11,14,1,12],
+            ];
+    let randomIndex=Math.floor(Math.random()*newId.length);
+    imgId=newId[randomIndex];
+    return imgId;
 }
 
 
